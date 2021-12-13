@@ -24,8 +24,12 @@ const countStrikes = (schedule) => {
 
     for (let item of schedule) {
         for (let a = +item[0]; a <= +lengthOfYear; a += +item[1]) {
-            if (!weekend.has(a)) strikes.add(a)
+            strikes.add(a)
         }
+    }
+
+    for (let day of weekend) {
+        if (strikes.has(day)) strikes.delete(day)
     }
 
     return strikes.size
